@@ -8,9 +8,9 @@ pool:
   name: 'selfhosted-agentpool'
 
 stages:
-- stage: Connect GHE
+- stage: ConnectGHE
   jobs:
-  - job: Connect_GHE
+  - job: ConnectGHE
     steps:
     - bash: |
         source ~/.bashrc
