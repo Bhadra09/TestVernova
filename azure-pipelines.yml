@@ -6,12 +6,15 @@ trigger:
 
 pool:
   name: 'selfhosted-agentpool'
-parameters:
-- name: target_env
-  displayName: Target environment
-  type: string
-  default: dev
-  values:
-  - dev
-  - stg
-  - prd
+
+stages:
+- stage: Connect GHE
+  jobs:
+  - job: Connect_GHE
+    steps:
+    - bash: |
+        source ~/.bashrc
+        rm -f ~/.gitconfig && rm -rf "$(Agent.BuildDirectory)/$(github_repo)"
+        git config --global url."https://$(github_pat)@github.build.ge.com/".insteadOf https://github.build.ge.com/
+        git clone -b $(github_branch) https://github.build.ge.com/$(github_org)/$(github_repo).git "$(Agent.BuildDirectory)/$(github_repo)"
+        displayName: 'git clone'
