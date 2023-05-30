@@ -1,0 +1,17 @@
+# Deployment Pipeline for Healthcare
+# https://aka.ms/yaml
+
+trigger:
+- none
+
+pool:
+  name: 'selfhosted-agentpool'
+parameters:
+- name: target_env
+  displayName: Target environment
+  type: string
+  default: dev
+  values:
+  - dev
+  - stg
+  - prd
