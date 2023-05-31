@@ -25,3 +25,5 @@ stages:
           displayName: 'git clone'
           echo $(Agent.BuildDirectory)
           echo $(github_repo)
+          echo$(Build.SourcesDirectory)
+
