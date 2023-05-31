@@ -19,8 +19,8 @@ stages:
       inputs:
         targetType: 'inline'
         script: |
-          echo 'cd $(Agent.BuildDirectory)'
-          cd $(Agent.BuildDirectory)
+          echo 'cd $(Build.SourcesDirectory)'
+          cd $(Build.SourcesDirectory)
           echo 'mkdir $(github_repo)'
           mkdir $(github_repo)
           git config --global url."https://$(github_pat)@github.build.ge.com/".insteadOf https://github.build.ge.com/
