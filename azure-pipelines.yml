@@ -19,7 +19,8 @@ stages:
       inputs:
         targetType: 'inline'
         script: |
+          rm -f ~/.gitconfig && rm -rf "$(Agent.BuildDirectory)/$(github_repo)"
           git config --global url."https://$(github_pat)@github.build.ge.com/".insteadOf https://github.build.ge.com/
-          git clone -b https://$(User_SSO):$(github_pat)github.build.ge.com/$(github_org)/$(github_repo).git
+          git clone -b https://$(User_SSO):$(github_pat)github.build.ge.com/$(github_org)/$(github_repo).git "$(Agent.BuildDirectory)/$(github_repo)"
           displayName: 'git clone'
           echo 'Testing to Clone the repo'
