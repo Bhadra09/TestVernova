@@ -7,6 +7,9 @@ trigger:
 pool:
   name: 'selfhosted-agentpool'
 
+variables:
+- group: 'sample'
+
 stages:
 - stage: CloneGHE
   jobs:
