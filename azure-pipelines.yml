@@ -25,7 +25,7 @@ stages:
           mkdir $(github_repo)
           git config --global url."https://$(github_pat)@github.build.ge.com/".insteadOf https://github.build.ge.com/
           echo 'Git Clone'
-          git clone -b https://$(User_SSO):$(github_pat)github.build.ge.com/$(github_org)/$(github_repo).git "$(Agent.BuildDirectory)/$(github_repo)"
+          git clone -b https://$(User_SSO):$(github_pat)github.build.ge.com/$(github_org)/$(github_repo).git "$(Build.SourcesDirectory)/$(github_repo)"
           echo $(Agent.BuildDirectory)
           echo $(github_repo)
           echo $(Build.SourcesDirectory)
