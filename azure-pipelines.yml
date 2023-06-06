@@ -5,7 +5,7 @@ trigger:
 - none
 
 pool:
-  name: 'selfhosted-agentpool'
+  name: 'ADOVMSSTest'
 
 variables:
 - group: 'sample'
@@ -42,17 +42,4 @@ stages:
         command: 'validate'
         workingDirectory: '$(System.DefaultWorkingDirectory)/$(github_repo)'
         allowTelemetryCollection: true
-    
-    - task: TerraformCLI@0
-      inputs:
-        command: 'validate'
-        workingDirectory: '$(System.DefaultWorkingDirectory)/$(github_repo)'
-        allowTelemetryCollection: true
-    - task: TerraformCLI@0
-      inputs:
-        command: 'plan'
-        workingDirectory: '$(System.DefaultWorkingDirectory)/$(github_repo)'
-        environmentServiceName: '567-gevernovabuildtestsub(37ed9c9a-0d39-4823-a06c-e8121b935f89)'
-        providerAzureRmSubscriptionId: '37ed9c9a-0d39-4823-a06c-e8121b935f89'
-        runAzLogin: true
-        allowTelemetryCollection: true
+  
