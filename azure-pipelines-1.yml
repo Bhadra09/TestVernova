@@ -1,0 +1,29 @@
+trigger:
+- none
+
+pool:
+  name: 'ADOVMSSTest'
+
+variables:
+- group: 'sample'
+
+stages:
+- stage: CloneGHE
+  jobs:
+  - job: CloneGHE
+    steps:
+    - task: Bash@3
+      inputs:
+        targetType: 'inline'
+        script: |
+          echo 'cd $(Build.SourcesDirectory)'
+          cd $(Build.SourcesDirectory)
+          echo 'mkdir $(github_repo)'
+          mkdir $(github_repo)
+          git config --global url."https://$(github_pat)@github.build.ge.com/".insteadOf https://github.com/Bhadra09/TestVernova/
+          echo 'Git Clone'
+          git clone https://$(User_SSO):$(github_pat)@github.build.ge.com/$(github_org)/$(github_repo).git "$(Build.SourcesDirectory)/$(github_repo)"
+          echo $(Agent.BuildDirectory)
+          echo $(github_repo)
+          echo $(Build.SourcesDirectory)
+          echo $(System.DefaultWorkingDirectory)
