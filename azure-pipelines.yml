@@ -30,16 +30,8 @@ stages:
           echo $(github_repo)
           echo $(Build.SourcesDirectory)
           echo $(System.DefaultWorkingDirectory)
-    - task: TerraformCLI@0
+    - task: Bash@3
       inputs:
-        command: 'init'
-        workingDirectory: '$(System.DefaultWorkingDirectory)/$(github_repo)'
-        backendType: 'selfConfigured'
-        allowTelemetryCollection: false
-    
-    - task: TerraformCLI@0
-      inputs:
-        command: 'validate'
-        workingDirectory: '$(System.DefaultWorkingDirectory)/$(github_repo)'
-        allowTelemetryCollection: true
+        targetType: 'inline'
+        script: './prereq.sh'
   
